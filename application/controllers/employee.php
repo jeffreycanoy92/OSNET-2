@@ -24,6 +24,7 @@ class Employee extends Admin_Controller{
 			$data["employee_list"] = $this->employee_model->get_all_employee();
 
 			$this->load->view("templates/header");
+			$this->load->view("templates/jquery-ui-header");
 			$this->load->view("templates/nav-sidebar");
 			$this->load->view("employee/employee_list_view", $data);
 			$this->load->view("templates/footer");
