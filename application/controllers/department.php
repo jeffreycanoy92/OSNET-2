@@ -1,9 +1,9 @@
 <?php
 class Department extends Admin_Controller{
   
-	public function __construct(){
-		parent::__construct();
-	}
+  public function __construct(){
+    parent::__construct();
+  }
   
 	/*
 		Branch: KEVIN-department_list_module_07/14/2014 
