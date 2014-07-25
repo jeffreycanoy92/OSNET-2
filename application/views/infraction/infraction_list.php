@@ -62,8 +62,8 @@
                                                 <td><?php echo $value->no_notification_count ?></td>
                                                 <td><?php echo $value->late_count ?></td>
                                                 <td>
-                                                  <button id="<?php echo $value->u_id ?>" class="btn btn-success btn-flat add-infraction" data-toggle="modal" data-target="#add-infraction-dialog" data-id=""><i class="fa fa-plus" data-toggle="tooltip" data-placement="right" title="Add Infraction"></i></button>
-                                                  <button class="btn btn-danger btn-flat view-infraction" data-toggle="modal" data-target="#add-infraction-dialog"><i class="fa fa-search" data-toggle="tooltip" data-placement="right" title="View Infractions"></i></button>
+                                                  <button id="<?php echo $value->u_id; ?>" class="btn btn-success btn-flat add-infraction" data-toggle="modal" data-target="#add-infraction-dialog" data-id=""><i class="fa fa-plus" data-toggle="tooltip" data-placement="right" title="Add Infraction"></i></button>
+                                                  <button id="<?php echo $value->u_id ?>" class="btn btn-danger btn-flat view-infraction" data-toggle="modal" data-target="#view-infraction-dialog"><i class="fa fa-gavel" data-toggle="tooltip" data-placement="right" title="View Infractions"></i></button>
                                                 </td>
                                               </tr>
                                             <?php endforeach; ?>
@@ -131,35 +131,59 @@
         </div>
         
         <!-- VIEW INFRACTION MODAL -->
-        <div id="add-infraction-dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div id="view-infraction-dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title"><i class="fa fa-gavel"></i> Add Infraction</h4>
+                <h4 class="modal-title"><i class="fa fa-gavel"></i> <span class="employee-firstname"></span> - Infractions Record</h4>
               </div>
               <div class="modal-body">
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon">Date: </span>
-                    <input type="text" class="infraction-date form-control"/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon">Infraction Type: </span>
-                    <select class="infraction-type form-control">
-                        <option value="0" selected>Select Infraction Type</option>
-                      <?php foreach($infraction_type as $value): ?>
-                        <option value="<?php echo $value->infraction_type_id; ?>"><?php echo $value->name; ?></option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
+                <h3>Infractions History: Current Quarter</h3>
+                <ul class="list-unstyled">
+                  <li>Total Infractions: <span class="total-infractions">0</span></li>
+                  <li>Total Unexcused Absences: <span class="total-unexcused-absences">0</span></li>
+                  <li>Total NCNS: <span class="total-ncns">0</span></li>
+                  <li>Total Lates: <span class="total-lates">0</span></li>
+                  <li>Total No Notifications: <span class="total-no-notifications">0</span></li>
+                  <li>Total Excused Absences: <span class="total-excused-absences">0</span></li>
+                </ul>
+                <table class="table table-bordered table-striped quarterly_infractions">
+                  <tr>
+                    <th>Infraction Type</th>
+                    <th>Date</th>
+                  </tr>
+                </table>
+                
+                <div class="dynamic-infraction-data">
+                  <input type="hidden" class="user-id" />
+                  <h3>
+                    <div class="">Infraction History:</div> 
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="infraction-date-range form-control" />
+                    </div>
+                  </h3>
+                  <ul class="list-unstyled">
+                    <li>Total Infractions: <span class="total-infractions2">0</span></li>
+                    <li>Total Unexcused Absences: <span class="total-unexcused-absences2">0</span></li>
+                    <li>Total NCNS: <span class="total-ncns2">0</span></li>
+                    <li>Total Lates: <span class="total-lates2">0</span></li>
+                    <li>Total No Notifications: <span class="total-no-notifications2">0</span></li>
+                    <li>Total Excused Absences: <span class="total-excused-absences2">0</span></li>
+                  </ul>
+                  <table class="table table-bordered table-striped quarterly_infractions2">
+                    <tr>
+                      <th>Infraction Type</th>
+                      <th>Date</th>
+                    </tr>
+                  </table>
                 </div>
               </div>
               <div class="modal-footer clearfix">
-                <button class="btn btn-primary pull-left"><i class="fa fa-gavel"></i> Save Infraction</button>
-                <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
+                <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-reply"></i> Back</button>
               </div>
             </div>
           </div>
