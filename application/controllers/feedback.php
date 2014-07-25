@@ -28,30 +28,26 @@ class Feedback extends Admin_Controller {
 	*/
 	
 	public function feedback_manager() {
-		if($this->session->userdata('logged_in') == 0)
-			redirect('home/login');
-		else {
-			if($this->session->userdata('role_type') == 'superadmin') {			
-				if($this->session->userdata('role_type') == 'superadmin') {
-					$data['feedback'] = $this->user_m->get_feedback();
-					
-					$this->load->view('templates/header');
-					$this->load->view('templates/nav-sidebar');
-					$this->load->view('user/feedback_superadmin', $data);
-					$this->load->view('templates/footer');
-				}
-				else echo 'ERRER';
-			}
-			else {
-				$data['features'] = $this->user_m->get_features($username);
-		
+		if($this->session->userdata('role_type') == 'superadmin') {			
+			if($this->session->userdata('role_type') == 'superadmin') {
+				$data['feedback'] = $this->user_m->get_feedback();
+				
 				$this->load->view('templates/header');
 				$this->load->view('templates/nav-sidebar');
-				$this->load->view('user/feedback', $data);
+				$this->load->view('user/feedback_superadmin', $data);
 				$this->load->view('templates/footer');
-				
 			}
+			else echo 'ERRER';
+		}
+		else {
+			$data['features'] = $this->user_m->get_features($username);
+	
+			$this->load->view('templates/header');
+			$this->load->view('templates/nav-sidebar');
+			$this->load->view('user/feedback', $data);
+			$this->load->view('templates/footer');
 			
 		}
+		
 	}
 }

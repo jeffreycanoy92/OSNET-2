@@ -13,21 +13,17 @@ class Team extends Admin_Controller {
 	*/
 	
 	public function render_team_list() {
-		if($this->session->userdata('logged_in') == 0)
-			redirect('home/login');
-		else {
-			$this->load->model('team_model');
+		$this->load->model('team_model');
 
-			$data['title'] = 'Team List';
-			$data['team_list'] = $this->team_model->get_all_team();
-			$data['department_list'] = $this->team_model->get_all_department();
+		$data['title'] = 'Team List';
+		$data['team_list'] = $this->team_model->get_all_team();
+		$data['department_list'] = $this->team_model->get_all_department();
 
-			$this->load->view('templates/header');
-			$this->load->view("templates/jquery-ui-header");
-			$this->load->view('templates/nav-sidebar');
-			$this->load->view('team/team_list_view', $data);
-			$this->load->view('templates/footer');
-		}
+		$this->load->view('templates/header');
+		$this->load->view("templates/jquery-ui-header");
+		$this->load->view('templates/nav-sidebar');
+		$this->load->view('team/team_list_view', $data);
+		$this->load->view('templates/footer');
 	}
 
     public function my_profile(){
