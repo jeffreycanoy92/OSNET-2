@@ -73,68 +73,6 @@ class User_M extends MY_Model
 	}
 	
 	/*
-		BRANCH: Role Manager
-		Created method: feedback 
-	*/ 
-	
-	function get_role_feature($role_type) {
-		$this->db->select('*');
-		$this->db->from('role');
-		$this->db->where('role_type', $role_type);
-		$this->db->join('role_feature', 'role.role_id = role_feature.role_id');
-		$this->db->join('feature', 'role_feature.feature_id = feature.feature_id');
-		$query = $this->db->get();
-	
-		if($query->result() != NULL)
-			return $query->result();
-		else return FALSE;
-	}
-	
-	function get_user_per_role($role_type) { 
-	
-		$this->db->select('*');
-		$this->db->from('role');
-		$this->db->where('role_type', $role_type);
-		$this->db->join('user_role', 'role.role_id = user_role.role_id');
-		$this->db->join('user_login', 'user_role.user_id = user_login.user_id');
-		$query = $this->db->get();
-	
-		if($query->result() != NULL)
-			return $query->result();
-		else return FALSE;
-	
-	}
-	
-	function get_role_type() {
-		$this->db->select('*');
-		$this->db->from('role');
-		$query = $this->db->get();
-	
-		if($query->result() != NULL)
-			return $query->result();
-		else return FALSE;
-	}
-	
-	
-	
-	// function get_user_role($role_type) {
-		// $this->db->select('*');
-		// $this->db->from('role');
-		// $this->db->where('role_type', $role_type);
-		// $this->db->join('user_role', 'role.role_id = user_role.role_id');
-		// $this->db->join('user_login', 'user_role.user_id = user_login.user_id');
-		// $query = $this->db->get();
-	
-
-		// if($query->result() != NULL)
-		// else echo "ha";
-			// print_r($query->result());
-			
-			// echo "he";
-	// }
-	
-	
-	/*
 		DILI PA NI FUNCTIONAL KAY KAILANGAN UG INFO SA USER_INFORMATION TABLE
 	
 	*/
@@ -154,6 +92,14 @@ class User_M extends MY_Model
 		$this->db->select('feature_name');
 		$this->db->from('feature');
 		$this->db->join('role_feature', 'feature.feature_id = role_feature.feature_id');
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
+	
+	function get_all_features() {
+		$this->db->select('feature_name');
+		$this->db->from('feature');
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -197,6 +143,9 @@ class User_M extends MY_Model
 			'date_created' => $data['date_created'],
 			'status' => $data['status']
 		);
+		
+		$message = "<p style='color:green'> Successfully added access rights to role. </p>";
+		$this->session->set_flashdata('message', $message);
 		
 		$this->db->insert('feedback', $newdata);
 		
