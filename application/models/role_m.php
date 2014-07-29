@@ -94,7 +94,25 @@
 	
 	}
 	
+	function delete_role_feature($role_id, $feature_id) {
 	
+		$this->db->where('role_id', $role_id);
+		$this->db->where('feature_id', $feature_id);
+		$this->db->delete('role_feature'); 
+	
+	}
+	
+	function delete_role_type($role_type) {
+		
+		$role_id = $this->get_id_by_role_type($role_type);
+		
+		$this->db->where('role_id', $role_id);
+		$this->db->delete('role_feature'); 
+		
+		$this->db->where('role_type', $role_type);
+		$this->db->delete('role');
+		
+	}
 	
 	function insert_role_feature($role_id, $feature_id) {
 	

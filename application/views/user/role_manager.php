@@ -105,6 +105,11 @@
 											aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" 
 											aria-label="Rendering engine: activate to sort column descending" 
 											style="width: 232px;">Role Types</th>
+											
+											<th class="sorting" role="columnheader" 
+											tabindex="0" aria-controls="example1" rowspan="1" colspan="1" 
+											aria-label="Platform(s): activate to sort column ascending" 
+											style="width: 2em;">Action</th>
 
 											<th class="sorting" role="columnheader" tabindex="0" aria-controls="example1" 
 											rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" 
@@ -133,6 +138,9 @@
 											<?php foreach($role_type as $rt): ?>
 											<tr>
 												<td><?php echo $rt->role_type; ?> </td>
+												<td>
+													<a id="archieve" href="<?php echo base_url().'role/delete_role/'.$rt->role_id.'/role_type'; ?>"><center><img src="<?php echo site_url("assets/img/delete.gif/"); ?>"></center></a>
+												</td>
 												<td><?php
 													foreach($features[$rt->role_type] as $f)
 														echo $f->feature_name, "<br>";
@@ -140,16 +148,16 @@
 												</td>
 												<td style="text-align:left">
 													<a id="edit" href="<?php echo base_url().'role/add_role/'.$rt->role_id; ?>/features"><img src="<?php echo site_url("assets/img/add.png"); ?>"></a>
-													<a id="archieve" href="#"><img src="<?php echo site_url("assets/img/delete.png/"); ?>"></a>
+													<a id="archieve" href="<?php echo base_url().'role/delete_role/'.$rt->role_id; ?>/features"><img src="<?php echo site_url("assets/img/delete.png/"); ?>"></a>
 												</td>
 												<td><?php
 													foreach($users[$rt->role_type] as $u)
 														echo $u->username, "<br>";
 													?>
 												</td>
-												<td>
-													<a id="edit" href="<?php echo base_url().'role/edit_role/'.$rt->role_id; ?>/users"><img src="<?php echo site_url("assets/img/edit.gif"); ?>"></a>
-													<a id="archieve" href="#"><img src="<?php echo site_url("assets/img/delete.gif/"); ?>"></a>
+												<td style="text-align:left">
+													<a id="edit" href="<?php echo base_url().'role/add_role/'.$rt->role_id; ?>/users"><img src="<?php echo site_url("assets/img/add.png"); ?>"></a>
+													<a id="archieve" href="<?php echo base_url().'role/delete_role/'.$rt->role_id; ?>/users"><img src="<?php echo site_url("assets/img/delete.png/"); ?>"></a>
 												</td>
 												<?php $i++; ?>
 											</tr>

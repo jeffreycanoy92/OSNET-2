@@ -4,7 +4,7 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-			   Add Visible Features
+			   Add Users as <?php echo ucfirst($role_type); ?>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
@@ -46,14 +46,14 @@
 
 										<tbody role="alert" aria-live="polite" aria-relevant="all">
 											
-											<?php foreach($non_visible_features as $nvf): ?>
+											<?php foreach($users_to_add as $u): ?>
 												<tr>
 												
 												<td>
-													<center><input type="checkbox" name="feature[]" value="<?php echo $nvf; ?>" />
+													<center><input type="checkbox" name="feature[]" value="<?php echo $u; ?>" />
 													<br></center>
 												</td>
-												<td style="text-align:left"><?php echo $nvf; ?><br></td>
+												<td style="text-align:left"><?php echo $u; ?><br></td>
 												</tr>
 											<?php endforeach; ?>
 											
@@ -63,7 +63,7 @@
 									<br>
 									<div class="row">                                      
 										<div class="col-xs-12">
-										<label><input type="submit" name="submit" value="Add Features to <?php echo ucfirst($role_type); ?>" class="btn btn-primary"/></label>
+										<label><input type="submit" name="submit" value="Change roles to  <?php echo ucfirst($role_type); ?>" class="btn btn-primary"/></label>
 										<input type="hidden" name="role_type" value="<?php echo $role_type; ?>"/>
 										</div>
 									</div>

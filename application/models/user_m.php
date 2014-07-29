@@ -56,6 +56,20 @@ class User_M extends MY_Model
 		return $query->result();
 	}
 	
+	function get_all_users($role_id) {
+		$this->db->select('*');
+		$this->db->from('user_login');
+		$this->db->where('role_id !=', $role_id);
+		$this->db->join('user_role', 'user_login.user_id = user_role.user_id');
+		$query = $this->db->get();
+	
+		$temp = $query->result();
+		
+		foreach($temp as $t)
+			echo $t->username;
+		
+	}
+	
 	/*
 		BRANCH: SA FEEDBACK (sa superadmin)
 		Created method: feedback 
@@ -150,4 +164,6 @@ class User_M extends MY_Model
 		$this->db->insert('feedback', $newdata);
 		
 	}
+	
+
 }

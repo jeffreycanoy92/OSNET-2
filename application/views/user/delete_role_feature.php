@@ -24,7 +24,7 @@
                                 <div class="box-header">
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
-									<form method="post" action="<?php echo base_url(); ?>role/add_features"  class="login-form col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" />
+									<form method="post" action="<?php echo base_url(); ?>role/delete_features"  class="login-form col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" />
                                   
 									<div id="example1_wrapper" class="dataTables_wrapper form-inline col-md-5" role="grid">
                                       
@@ -46,14 +46,14 @@
 
 										<tbody role="alert" aria-live="polite" aria-relevant="all">
 											
-											<?php foreach($non_visible_features as $nvf): ?>
+											<?php foreach($visible_features as $vf): ?>
 												<tr>
 												
 												<td>
-													<center><input type="checkbox" name="feature[]" value="<?php echo $nvf; ?>" />
+													<center><input type="checkbox" name="feature[]" value="<?php echo $vf; ?>" />
 													<br></center>
 												</td>
-												<td style="text-align:left"><?php echo $nvf; ?><br></td>
+												<td style="text-align:left"><?php echo $vf; ?><br></td>
 												</tr>
 											<?php endforeach; ?>
 											
@@ -63,7 +63,7 @@
 									<br>
 									<div class="row">                                      
 										<div class="col-xs-12">
-										<label><input type="submit" name="submit" value="Add Features to <?php echo ucfirst($role_type); ?>" class="btn btn-primary"/></label>
+										<label><input type="submit" name="submit" value="Delete Features from <?php echo ucfirst($role_type); ?>" class="btn btn-primary"/></label>
 										<input type="hidden" name="role_type" value="<?php echo $role_type; ?>"/>
 										</div>
 									</div>
