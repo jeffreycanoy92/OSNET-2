@@ -93,9 +93,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-angle-double-right"></i>Apply Leave</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right"></i>Leave Statistics</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right"></i>Leave List</a></li>
+                                <li><a href="<?php echo site_url('leave/leave_apply'); ?>"><i class="fa fa-angle-double-right"></i>Apply Leave</a></li>
+                                <li><a href="<?php echo site_url('leave/leave_statistics'); ?>"><i class="fa fa-angle-double-right"></i>Leave Statistics</a></li>
+                                <li><a href="<?php echo site_url('leave/leave_list'); ?>"><i class="fa fa-angle-double-right"></i>Leave List</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
